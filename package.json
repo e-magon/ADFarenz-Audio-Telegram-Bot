@@ -1,0 +1,16 @@
+{
+  "name": "adfarenz-audio-telegram-bot",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/e-magon/ADFarenz-Audio-Telegram-Bot.git"
+  },
+  "author": "emagon",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.50.0"
+  }
+}
