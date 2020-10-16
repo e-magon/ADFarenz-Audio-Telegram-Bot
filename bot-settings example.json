@@ -3,5 +3,5 @@
   "groupid": "-something",
   "senddelmsg": true,
   "allowothermsgs": false,
-  "maxaudiosecs": 5
+  "maxaudiosecs": 15
 }
