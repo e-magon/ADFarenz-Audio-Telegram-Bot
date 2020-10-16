@@ -91,7 +91,7 @@ function cmdChatId(msg) {
 // /soloaudio
 function cmdSoloAudio(msg) {
   botSettings.allowothermsgs = false;
-  const confirmText = "D'ora in poi accetto solo i messaggi audio inferiori a " + botSettings.maxaudiosecs + " secondi";
+  const confirmText = "D'ora in poi accetterò solo i messaggi audio inferiori a " + botSettings.maxaudiosecs + " secondi";
   bot.sendMessage(msg.chat.id, confirmText);
 
   updateSettingsFile();
@@ -100,7 +100,7 @@ function cmdSoloAudio(msg) {
 // /tuttimessaggi
 function cmdTuttiMessaggi(msg) {
   botSettings.allowothermsgs = true;
-  const confirmText = "D'ora in poi accetto anche i messaggi di testo (oltre ai vocali inferiori a " + botSettings.maxaudiosecs + " secondi)";
+  const confirmText = "D'ora in poi accetterò anche i messaggi di testo (oltre ai vocali inferiori a " + botSettings.maxaudiosecs + " secondi)";
   bot.sendMessage(msg.chat.id, confirmText);
 
   updateSettingsFile();
