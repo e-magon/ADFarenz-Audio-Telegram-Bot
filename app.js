@@ -13,7 +13,7 @@ bot.on("message", async (msg) => {
   // Check if it is the correct group
   if (chatId != botSettings.groupid) {
     // if it isn't the correct group, the only message it will answer to is chat id
-    if (msg.text && text.match(/\/chatid($|@adfarenzaudiobot$)/))
+    if (msg.text && msg.text.match(/\/chatid($|@adfarenzaudiobot$)/))
       cmdChatId(msg);
     return;
   }
@@ -21,6 +21,7 @@ bot.on("message", async (msg) => {
   // Check if the message is from an admin
   let status = (await bot.getChatMember(chatId, msg.from.id)).status;
   if (status == "creator" || status == "administrator" || msg.from.username == "GroupAnonymousBot") {
+    console.log(`admin (${msg.from.username} - ${status})`);
     // check if the admin wrote a command
     if (msg.text) {
       let text = msg.text;
@@ -52,14 +53,16 @@ bot.on("message", async (msg) => {
     }
   }
 
-  // check if it is an audio msg
+  // if every msgs are allowed, it doesn't do nothing
+  if (botSettings.allowothermsgs) {
+    return;
+  }
+
+  // if only audio msgs are allowed, check if it is an audio msg
   if (msg.voice) {
     // check if it is under the limit
     if (msg.voice.duration <= botSettings.maxaudiosecs)
       return;
-  } else if (botSettings.allowothermsgs) {
-    // if it isn't an audio message and other msgs are allowed:
-    return;
   }
 
   // this will prevent msgs like "msg pinned", "new user" ecc. to be eliminated
@@ -76,7 +79,7 @@ function cmdHelp(msg) {
   const helpText = `help - spiega i comandi disponibili
 chatid - id della chat
 soloaudio - accetta solo messaggi audio (meno di 15 secondi)
-tuttimessaggi - accetta messaggi audio (meno di 15 secondi) e i messaggi di testo
+tuttimessaggi - accetta tutti i messaggi
 confermaeliminazione - scrive in chat quando un messaggio è stato eliminato
 nascondieliminazione - non scrive in chat quando un messaggio è stato eliminato`;
   bot.sendMessage(msg.chat.id, helpText);
@@ -100,7 +103,7 @@ function cmdSoloAudio(msg) {
 // /tuttimessaggi
 function cmdTuttiMessaggi(msg) {
   botSettings.allowothermsgs = true;
-  const confirmText = "D'ora in poi accetterò anche i messaggi di testo (oltre ai vocali inferiori a " + botSettings.maxaudiosecs + " secondi)";
+  const confirmText = "D'ora in poi accetterò tutti i messaggi)";
   bot.sendMessage(msg.chat.id, confirmText);
 
   updateSettingsFile();
