@@ -2,6 +2,7 @@
   "token": "token",
   "groupid": "-something",
   "senddelmsg": true,
-  "allowothermsgs": false,
-  "maxaudiosecs": 15
+  "botmode": 0,
+  "maxaudiosecs": 15,
+  "delconfirmationexpireseconds": 10
 }

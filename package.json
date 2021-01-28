@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "forever app.js"
   },
   "repository": {
     "type": "git",
@@ -11,6 +11,6 @@
   },
   "author": "emagon",
   "dependencies": {
-    "node-telegram-bot-api": "^0.50.0"
+    "node-telegram-bot-api": "^0.51.0"
   }
 }
