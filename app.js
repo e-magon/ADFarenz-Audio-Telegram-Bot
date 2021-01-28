@@ -37,7 +37,7 @@ bot.on("message", async (msg) => {
         cmdHelp(msg);
       } else if (text.match(new RegExp(`^\/chatid($|@${botUsername}$)`))) {
         cmdChatID(msg);
-      } else if (text.match(new RegExp(`^\/impostazioni($|@${botUsername}$)`))) {
+      } else if (text.match(new RegExp(`^\/audiobot($|@${botUsername}$)`))) {
         cmdImpostazioni(msg);
       }
     }
@@ -190,7 +190,7 @@ function cmdChatID(msg) {
   bot.sendMessage(msg.chat.id, msg.chat.id);
 }
 
-// /impostazioni
+// /audiobot
 async function cmdImpostazioni(msg) {
   // closes old settings msg still open (open: inline keyboard shown)
   closeOpenSettingsMessages();
@@ -328,15 +328,15 @@ async function initialSetUp() {
   let commands = [
     {
       command: "help",
-      description: "spiega i comandi disponibili"
+      description: "spiega i comandi disponibili del bot ADFarenz Audio Bot"
     },
     {
       command: "chatid",
       description: "id della chat"
     },
     {
-      command: "impostazioni",
-      description: "apre la configurazione del bot"
+      command: "audiobot",
+      description: "apre la impostazioni del bot ADFarenz Audio Bot"
     }
   ];
   bot.setMyCommands(commands);
@@ -347,7 +347,7 @@ async function initialSetUp() {
 
 // checks if the passed text is a command
 function isACommand(text) {
-  return text.match(new RegExp(`^\/(help|chatid|impostazioni)($|@${botUsername}$)`));
+  return text.match(new RegExp(`^\/(help|chatid|audiobot)($|@${botUsername}$)`));
 }
 
 // it generates the text to be displayed in the configuration message
