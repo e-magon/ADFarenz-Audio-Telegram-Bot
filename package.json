@@ -1,6 +1,6 @@
 {
   "name": "adfarenz-audio-telegram-bot",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "main": "app.js",
   "scripts": {
     "start": "forever app.js"
