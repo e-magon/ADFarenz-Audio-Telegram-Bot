@@ -3,7 +3,7 @@
   "version": "2.0.0",
   "main": "app.js",
   "scripts": {
-    "start": "forever app.js"
+    "start": "forever --minUptime=1 app.js"
   },
   "repository": {
     "type": "git",
